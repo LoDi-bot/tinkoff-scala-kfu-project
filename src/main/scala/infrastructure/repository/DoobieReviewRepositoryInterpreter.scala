@@ -19,7 +19,7 @@ private object ReviewSQL {
   def update(review: Review, id: Long): Update0 =
     sql"""
     UPDATE REVIEW
-    SET TITLE = ${review.content}, AUTHOR = ${review.mark}
+    SET CONTENT = ${review.content}, MARK = ${review.mark}
     WHERE ID = $id
   """.update
 
@@ -39,7 +39,6 @@ private object ReviewSQL {
     sql"""
     SELECT CONTENT, MARK, AUTHOR, BOOK, ID
     FROM REVIEW
-    ORDER BY TITLE
   """.query
 
   def selectAllByBookId(bookId: Long): Query0[Review] =

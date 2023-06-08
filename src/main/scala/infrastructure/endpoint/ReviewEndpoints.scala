@@ -37,7 +37,7 @@ class ReviewEndpoints[F[_] : Sync, Auth: JWTMacAlgo] extends Http4sDsl[F] {
       }
   }
 
-  private def updateBookEndpoint(reviewService: ReviewService[F]): AuthEndpoint[F, Auth] = {
+  private def updateReviewEndpoint(reviewService: ReviewService[F]): AuthEndpoint[F, Auth] = {
     case req@PUT -> Root / LongVar(_) asAuthed _ =>
       val action = for {
         review <- req.request.as[Review]
@@ -85,7 +85,7 @@ class ReviewEndpoints[F[_] : Sync, Auth: JWTMacAlgo] extends Http4sDsl[F] {
                ): HttpRoutes[F] = {
     val authEndpoints: AuthService[F, Auth] = {
       val allRoles =
-        createReviewEndpoint(reviewService).orElse(updateBookEndpoint(reviewService))
+        createReviewEndpoint(reviewService).orElse(updateReviewEndpoint(reviewService))
       val onlyAdmin =
         deleteReviewEndpoint(reviewService)
 

@@ -1,0 +1,641 @@
+{
+	"info": {
+		"_postman_id": "cbf242a6-4fe9-4d7c-a79d-0b3eb6a5a650",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20329945"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"LoDi\",\r\n  \"firstName\": \"Iskander\",\r\n  \"lastName\": \"Asadullin\",\r\n  \"email\": \"asadullin.iskander@mail.ru\",\r\n  \"password\": \"Asadullin2003\",\r\n  \"role\": \"User\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"admin\",\n  \"password\": \"Asadullin2003\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update(only for admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"LoDi\",\n  \"firstName\": \"Iskander\",\n  \"lastName\": \"Asadullin\",\n  \"email\": \"asadullin.iskander@mail.ru\",\n  \"hashPassword\": \"$2a$10$fiXGwSRCvo762gv3nqtwb.WBsE5RSY5AqSMkLCuXVTUreQ4ETOonO\",\n  \"id\": 1,\n  \"role\": \"User\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users/LoDi",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"LoDi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list(only for admin)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNTk0OTIsImlhdCI6MTY4NjIyMzQ5MiwianRpIjoiMjA0NzA5YmExNDAzMDc4Y2M2N2NmNDZiNjEwZDZkYzAifQ.VL4rtEkw-sPw8auq99RaKSFFdOsO0F-K23b8f3mDtB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search by name(only for admin)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNTk1NzIsImlhdCI6MTY4NjIyMzU3MiwianRpIjoiM2Y4NWYwMGE3ODI3YWY4YjRjZjk3ZjU2YjBjMGRiMGYifQ.wiXNeHdDnsmPrHOd3Uu8CS6uFh6eJv1dkhlUybnL8p8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users/LoDi",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"LoDi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by name(only for admin)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"LoDi\",\n  \"password\": \"Asadullin2003\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "create book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Anna Karenina\",\n  \"description\": \"Anna Karenina tells of the doomed love affair between the sensuous and rebellious Anna and the dashing officer, Count Vronsky. Tragedy unfolds as Anna rejects her passionless marriage and must endure the hypocrisies of society. Set against a vast and richly textured canvas of nineteenth-century Russia, the novel's seven major characters create a dynamic imbalance, playing out the contrasts of city and country life and all the variations on love and family happiness. While previous versions have softened the robust, and sometimes shocking, quality of Tolstoy's writing, Pevear and Volokhonsky have produced a translation true to his powerful voice. This award-winning team's authoritative edition also includes an illuminating introduction and explanatory notes. Beautiful, vigorous, and eminently readable, this Anna Karenina will be the definitive text for generations to come.\",\n  \"author\": \"Leo Tosltoy\",\n  \"rate\": 10,\n  \"pushedBy\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create book 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"War and Peace\",\n  \"description\": \"Epic in scale, War and Peace delineates in graphic detail events leading up to Napoleon's invasion of Russia, and the impact of the Napoleonic era on Tsarist society, as seen through the eyes of five Russian aristocratic families.\",\n  \"author\": \"Leo Tosltoy\",\n  \"rate\": 9,\n  \"pushedBy\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"War and Peace\",\n  \"description\": \"Epic in scale, War and Peace delineates in graphic detail events leading up to Napoleon's invasion of Russia, and the impact of the Napoleonic era on Tsarist society, as seen through the eyes of five Russian aristocratic families.\",\n  \"author\": \"Leo Tosltoy\",\n  \"rate\": 9,\n  \"pushedBy\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id(only for admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjA5NTMsImlhdCI6MTY4NjIyNDk1MywianRpIjoiOTA0NDZiMThiMjI0YmNhY2MzNzdmNTU5ZWM4YTI0YzgifQ.2vqq8ymo3wP_HHo-tuMCQaYC33apC6w0iPFLyy2_Dfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjA5NTMsImlhdCI6MTY4NjIyNDk1MywianRpIjoiOTA0NDZiMThiMjI0YmNhY2MzNzdmNTU5ZWM4YTI0YzgifQ.2vqq8ymo3wP_HHo-tuMCQaYC33apC6w0iPFLyy2_Dfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "create review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjQzNTYsImlhdCI6MTY4NjIyODM1NiwianRpIjoiOGY4MzNkMDc2Mzg1NjA5YjYxMzgyYTZlNmM0NThjN2MifQ.7yY-v1DAVL6GYG4ZJGpGPHkuJW2VT-hOEMM71cb02jc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"content\": \"Like it very much\",\n  \"mark\": 10,\n  \"author\": 2,\n  \"book\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"War and Peace\",\n  \"description\": \"Epic in scale, War and Peace delineates in graphic detail events leading up to Napoleon's invasion of Russia, and the impact of the Napoleonic era on Tsarist society, as seen through the eyes of five Russian aristocratic families.\",\n  \"author\": \"Leo Tosltoy\",\n  \"rate\": 99,\n  \"pushedBy\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/reviews/",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id(only for admin) Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjA5NTMsImlhdCI6MTY4NjIyNDk1MywianRpIjoiOTA0NDZiMThiMjI0YmNhY2MzNzdmNTU5ZWM4YTI0YzgifQ.2vqq8ymo3wP_HHo-tuMCQaYC33apC6w0iPFLyy2_Dfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjA5NTMsImlhdCI6MTY4NjIyNDk1MywianRpIjoiOTA0NDZiMThiMjI0YmNhY2MzNzdmNTU5ZWM4YTI0YzgifQ.2vqq8ymo3wP_HHo-tuMCQaYC33apC6w0iPFLyy2_Dfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODYyNjA5NTMsImlhdCI6MTY4NjIyNDk1MywianRpIjoiOTA0NDZiMThiMjI0YmNhY2MzNzdmNTU5ZWM4YTI0YzgifQ.2vqq8ymo3wP_HHo-tuMCQaYC33apC6w0iPFLyy2_Dfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
